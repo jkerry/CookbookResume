@@ -17,3 +17,7 @@ end
 remote_file "/build/Resume/res.cls" do
   source "http://www.rpi.edu/dept/arc/training/latex/resumes/res.cls"
 end
+
+template "/build/Resume/resume.tex" do
+  source "resume.tex.erb"
+end
