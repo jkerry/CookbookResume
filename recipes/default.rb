@@ -14,10 +14,21 @@ directory "/build/Resume" do
   recursive true
 end
 
-remote_file "/build/Resume/res.cls" do
-  source "http://www.rpi.edu/dept/arc/training/latex/resumes/res.cls"
+template "/build/Resume/resume.cls" do
+  source "resume.cls.erb"
 end
 
 template "/build/Resume/resume.tex" do
   source "resume.tex.erb"
+end
+
+script 'compile_resume' do
+  interpreter "bash"
+  action :nothing
+  cwd "/build/Resume/"
+  code <<-EOH
+    pdflatex resume.tex
+  EOH
+  subscribes :run, 'template[/build/Resume/resume.tex]'
+  subscribes :run, 'template[/build/Resume/resume.cls]'
 end

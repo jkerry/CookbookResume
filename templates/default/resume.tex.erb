@@ -1,85 +1,153 @@
-% LaTeX resume using res.cls
-\documentclass[margin]{res}
-%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
-%\usepackage{newcent}   % uses new century schoolbook postscript font
-\setlength{\textwidth}{5.1in} % set width of text portion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{resume} % Use the custom resume.cls style
+
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+
+\name{John Kerry} % Your name
+\address{<%= node['resume']['address']['street']%> \\ <%= node['resume']['address']['city']%>, <%= node['resume']['address']['state']%> <%= node['resume']['address']['zip']%>} % Your address
+\address{<%= node['resume']['phone'] %> \\ john@kerryhouse.net} % Your phone number and email
 
 \begin{document}
 
-% Center the name over the entire width of resume:
- \moveleft.5\hoffset\centerline{\large\bf Susan R. Bumpershoot}
-% Draw a horizontal line the whole width of resume:
- \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip
-% address begins here
-% Again, the address lines must be centered over entire width of resume:
- \moveleft.5\hoffset\centerline{1985 Storm Lane}
- \moveleft.5\hoffset\centerline{Troy, NY 12180}
- \moveleft.5\hoffset\centerline{(518) 273-0014 or (518) 272-6666}
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
 
+\begin{rSection}{Education}
 
-\begin{resume}
+{\bf University of Georgia} \hfill {\em May 2013} \\
+M.S. in Plant Biology \\
+Thesis: System-Based Transcriptomic and Metabolomic Network Analyses in Papaver Somniferum \\
+\\
+{\bf University of Georgia} \hfill {\em May 2011} \\
+B.S. in Computer Science \& Mathematics \\
 
-\section{OBJECTIVE}  A position in the field of computers with special
-                interests in business applications programming,
-                information processing, and management systems.
+\end{rSection}
 
+%----------------------------------------------------------------------------------------
+%	TECHNICAL STRENGTHS SECTION
+%----------------------------------------------------------------------------------------
 
-\section{EDUCATION} {\sl Bachelor of Science,} Interdisciplinary Science \\
-                      % \sl will be bold italic in New Century Schoolbook (or
-	              % any postscript font) and just slanted in
-		      %	Computer Modern (default) font
-                Rensselaer Polytechnic Institute, Troy, NY,
-                expected December 1990 \\
-                Concentration: Computer Science \\
-                Minor: Management
+\begin{rSection}{Technical Strengths}
 
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Languages And Platforms & C\#, ASP.Net MVC/WebAPI, SQL, Python, C(++), Cuda\\
+Development Methods & Agile, Waterfall, Small Team Management\\
+Databases & Microsoft SQL, SQL Profiler \& Extended Events\\
+Tools & Team Foundation Server, MSBuild, MSTest, Jenkins CI, Git
+\end{tabular}
 
-\section{COMPUTER \\ SKILLS} {\sl Languages \& Software:} COBOL, IFPS, Focus,
-         Megacalc, Pascal, Modula2, C, APL, SNOBOL,
-                FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab,
-                IBM 370 Assembler, Lotus 1-2-3. \\
-                {\sl Operating Systems:} MTS, TSO, Unix.
+\end{rSection}
 
-\section{EXPERIENCE} {\sl Business Applications Programmer} \hfill Fall 1990 \\
-                Allied-Signal Bendix Friction Materials Division,
-                Financial Planning Department, Latham, NY
-                 \begin{itemize}  \itemsep -2pt %reduce space between items
-                 \item Developed four ``user friendly" forecasting
-                    systems each of which produces 18 to 139
-                    individual reports.
-                \item   Developed or improved almost all IFPS
-                    programs used for financial reports.
-                \end{itemize}
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
 
-                {\sl Research Programmer} \hfill            Summer 1990 \\
-                Psychology Department, Rensselaer Polytechnic
-                Institute
-                 \begin{itemize}  \itemsep -2pt %reduce space between items
-                 \item Performed computer aided statistical analysis
-                    of data.
-                 \end{itemize}
-                {\sl Assistant Manager} \hfill        Summers 1988-89 \\
-                Thunder Restaurant, Canton, CT
-                  \begin{itemize}
-                   \item Recognized need for, developed, and wrote
-                    employee training manual. Performed various
-                    duties including cooking, employee training,
-                    ordering, and inventory control.
-                   \end{itemize}
+\begin{rSection}{Experience}
 
-\section{COMMUNITY \\ SERVICE}  Organized and directed the 1988 and 1989 Grand
-                 Marshall Week \newline ``Basketball Marathon.'' A 24 hour
-                charity event to benefit the Troy Boys Club. Over
-                250 people participated each year.
+\begin{rSubsection}{NCR}{May 2013 - Present}{Software Engineer}{Alpharetta, GA}
+\item Developed and maintained code on a C\#, asp.net MVC 5 / Web API 2 / WCF stack
+\item Lead DevOps champion: acting as an interface between development and operations, Championing chef driven continuous delivery strategies, and implementing strategic improvements to continually make deployment more efficient and less painful
+\item Create and maintain continuous integration pipelines for a legacy e-commerce product (Jenkins, MS[Build/Test], heaps of powershell and diplomacy)
+\item Primary developer in charge of database structure and optimization in a transaction processing system handling 30,000+ daily transactions resulting in 120x improvement in some ORM generated queries
+\item Reviewed designs, code, database changes, and feature specifications across the organization
+\item Presented talks on Test Driven Design, internal database architecture and design, dependency injection, and query performance tuning
+\item Attained the highest possible overall performance rating during annual performance reviews
+\end{rSubsection}
 
-\section{EXTRA-CURRICULAR \\ ACTIVITIES}
-            Elected {\it House Manager}, Rho Phi Sorority \\
-            Elected {\it Sports Chairman} \\
-            Attended Krannet Leadership Conference \\
-                Headed delegation to Rho Phi Congress \\
-                Junior varsity basketball team \\
-                Participant, seven intramural athletic teams
+%------------------------------------------------
 
+\begin{rSubsection}{UGA Plant Biology Department}{May 2009 - May 2013}{Research Assistant, Teaching Assistant}{Athens, GA}
+\item Technologies: Perl, Python, *nix, Cluster Server Management, Shell Scripting, R, GP-GPU, CUDA, Java, Grails
+\item Developed numerical and statistical methods used to analyze large volumes of high throughput gene expression data
+\item Managed a small team to develop and maintain AlignDB, a Groovy/Grails driven web service for the collaborative assembly by laboratories across the globe of genes found in close relatives across the tree of life
+\item Utilized GP-GPU acceleration (CUDA C) to increase the throughput of simulation statistics
+\end{rSubsection}
 
-\end{resume}
+%------------------------------------------------
+
+\end{rSection}
+
+\pagebreak
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Research}
+
+\begin{rSubsection}{University of Georgia, Department of Plant Biology}{January 2009 - May 2013}{}{}
+\item \textbf{Thesis: System-Based Transcriptomic and Metabolomic Network Analyses in Papaver Somniferum} \\
+Developed a novel protocol for the clustering of transcripts from a de novo assembly of closely related species using weighted correlation network analysis. The results of these analyses included support for known relationships between genes in the morphine biosynthesis pathway as well as the identification of a host of genes that may be related to the greater benzylisoquineoline alkaloid biosynthesis pathway.
+\\
+\item \textbf{Momany Laboratory: Bioinformatics} \\
+Volunteered as a bioinformatician for the Momany Laboratory. Performed reference based sequence assembly and differential expression analysis of various filamentous fungus species. Collaborated with the Leebens-Mack laboratory in developing custom analysis tools using poisson distribution based statistical models. Instructed department graduate students in bioinformatic methods and statistical analysis of computational-biology data.
+\end{rSubsection}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	LEADERSHIP EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Leadership}
+
+\begin{rSubsection}{NCR, Aloha Online Ordering }{May 2013 - Present}{Lead Developer}{Alpharetta, GA}
+\item Managed development on the maintenance team consisting of two developers during feature development up to eight developers during regression
+\item Organized and executed international production deployments and critical patch deployments of core Aloha Online Ordering products
+\item Served as the primary developer resource for database optimization. Regularly assisted developers in database management and efficient data access patterns
+\item Actively pushed investment in core product health by promoting coding standards, development tools, test driven development,
+and core efficiency by relating costs and benefits to nontechnical staff and management
+\item Mentored other developers and helped develop the on boarding process for newly hired developers
+\end{rSubsection}
+
+\begin{rSubsection}{UGA CUDA Teaching Center}{August 2011 - May 2013}{Founding Member, Speaker}{Athens, GA}
+\item Helped establish UGA as a NVIDIA sponsored 2011-2012 CUDA Teaching Center
+\item Attended the 2012 GPU Technology Conference funded by the Georgia Advanced Computing Resource Center
+\item Regularly presented on topics such as multiple GPU programming and code optimization
+\item Assisted in workshops intended to introduce the broader university community to the benefits and challenges of
+GPU computation
+\end{rSubsection}
+
+\begin{rSubsection}{UGA Biology Undergraduate Development Group}{August 2011 - May 2013}{Assistant Educator, Computational Biology Expert}{Athens, GA}
+\item Assisted the undergraduate biology laboratory director Dr. Kristen Miller and instructor Dr. Norris Armstrong in modifying existing biology lab exercises by including a higher level of engaging computational biology analysis
+\item Demonstrated the first modified bioinformatic-enabled lab exercise in Summer 2012
+\item Developed laboratory exercises and course plans for use in introductory biology laboratory activities and graduate level bioinformatics analysis courses
+\end{rSubsection}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	EXAMPLE SECTION
+%----------------------------------------------------------------------------------------
+
+%\begin{rSection}{Section Name}
+
+%Section content\ldots
+
+%\end{rSection}
+
+%----------------------------------------------------------------------------------------
+
 \end{document}
