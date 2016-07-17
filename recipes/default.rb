@@ -30,8 +30,8 @@ directory '/build/Resume' do
   mode '0755'
 end
 
-remote_file '/build/Resume/res.cls' do
-  source 'http://www.rpi.edu/dept/arc/training/latex/resumes/res.cls'
+template '/build/Resume/resume.cls' do
+  source 'resume.cls.erb'
   owner build_user
   group build_group
   mode '0766'
@@ -50,4 +50,5 @@ execute '/usr/bin/pdflatex resume.tex' do
   user build_user
   group build_group
   subscribes :run, 'template[/build/Resume/resume.tex]'
+  subscribes :run, 'template[/build/Resume/resume.cls]'
 end
