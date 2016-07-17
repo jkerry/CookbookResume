@@ -12,12 +12,17 @@ describe file('/build/Resume') do
   it { should be_directory}
 end
 
-describe file('/build/Resume/res.cls') do
+describe file('/build/Resume/resume.cls') do
   it { should be_file }
-  its('md5sum') { should eq '8ec1e15ab4c53340bc92863668c7be49' }
+  its('md5sum') { should eq '483cbfa77a995214b6d63abf031893e3' }
 end
 
 describe file('/build/Resume/resume.tex') do
   it { should be_file }
-  its('md5sum') { should eq '2293e65e32c61ee95927f827d9c1cefd' }
+  its('md5sum') { should eq 'dc581b0f70f84f4af7a155d4701e59c6' }
+end
+
+describe file('/build/Resume/resume.pdf') do
+  it { should be_file }
+  its('md5sum') { should eq '73621f1306bb9d0100e3ba72afd6c8d6' }
 end
