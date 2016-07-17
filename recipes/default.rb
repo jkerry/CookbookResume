@@ -10,14 +10,44 @@ package 'texlive' do
   timeout 3600
 end
 
-directory "/build/Resume" do
+build_user = 'vagrant'
+build_group = 'vagrant'
+
+user build_user do
+  action :create
+end
+
+group build_group do
+  action :modify
+  members build_user
+  append true
+end
+
+directory '/build/Resume' do
   recursive true
+  owner build_user
+  group build_group
+  mode '0755'
 end
 
-remote_file "/build/Resume/res.cls" do
-  source "http://www.rpi.edu/dept/arc/training/latex/resumes/res.cls"
+remote_file '/build/Resume/res.cls' do
+  source 'http://www.rpi.edu/dept/arc/training/latex/resumes/res.cls'
+  owner build_user
+  group build_group
+  mode '0766'
 end
 
-template "/build/Resume/resume.tex" do
-  source "resume.tex.erb"
+template '/build/Resume/resume.tex' do
+  source 'resume.tex.erb'
+  owner build_user
+  group build_group
+  mode '0766'
+end
+
+execute '/usr/bin/pdflatex resume.tex' do
+  action :nothing
+  cwd '/build/Resume'
+  user build_user
+  group build_group
+  subscribes :run, 'template[/build/Resume/resume.tex]'
 end
