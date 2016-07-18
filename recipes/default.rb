@@ -10,6 +10,11 @@ package 'texlive' do
   timeout 3600
 end
 
+package 'texlive-latex-extra' do
+  action :install
+  timeout 3600
+end
+
 build_user = 'vagrant'
 build_group = 'vagrant'
 
@@ -44,7 +49,7 @@ template '/build/Resume/resume.tex' do
   mode '0766'
 end
 
-execute '/usr/bin/pdflatex resume.tex' do
+execute '/usr/bin/pdflatex -shell-escape resume.tex' do
   action :nothing
   cwd '/build/Resume'
   user build_user
