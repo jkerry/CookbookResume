@@ -23,6 +23,9 @@
 \documentclass{resume} % Use the custom resume.cls style
 
 \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+\usepackage{pst-barcode}
+\usepackage{auto-pst-pdf}
+\usepackage{wrapfig}
 
 \name{John Kerry} % Your name
 \address{<%= node['resume']['address']['street']%> \\ <%= node['resume']['address']['city']%>, <%= node['resume']['address']['state']%> <%= node['resume']['address']['zip']%>} % Your address
@@ -52,10 +55,9 @@ B.S. in Computer Science \& Mathematics \\
 \begin{rSection}{Technical Strengths}
 
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-Languages And Platforms & C\#, ASP.Net MVC/WebAPI, SQL, Python, C(++), Cuda\\
-Development Methods & Agile, Waterfall, Small Team Management\\
-Databases & Microsoft SQL, SQL Profiler \& Extended Events\\
-Tools & Team Foundation Server, MSBuild, MSTest, Jenkins CI, Git
+Languages And Platforms & C\#, Ruby, T-SQL, Python, C(++), Cuda\\
+Databases/NoSQL & MSSQL, Redis, Elasticsearch \\
+Tools & Chef, Jenkins, TFS, MSBuild, MSTest, Git \\
 \end{tabular}
 
 \end{rSection}
@@ -66,13 +68,12 @@ Tools & Team Foundation Server, MSBuild, MSTest, Jenkins CI, Git
 
 \begin{rSection}{Experience}
 
-\begin{rSubsection}{NCR}{May 2013 - Present}{Software Engineer}{Alpharetta, GA}
-\item Developed and maintained code on a C\#, asp.net MVC 5 / Web API 2 / WCF stack
-\item Lead DevOps champion: acting as an interface between development and operations, Championing chef driven continuous delivery strategies, and implementing strategic improvements to continually make deployment more efficient and less painful
-\item Create and maintain continuous integration pipelines for a legacy e-commerce product (Jenkins, MS[Build/Test], heaps of powershell and diplomacy)
-\item Primary developer in charge of database structure and optimization in a transaction processing system handling 30,000+ daily transactions resulting in 120x improvement in some ORM generated queries
-\item Reviewed designs, code, database changes, and feature specifications across the organization
-\item Presented talks on Test Driven Design, internal database architecture and design, dependency injection, and query performance tuning
+\begin{rSubsection}{NCR}{May 2013 - Present}{Lead Developer, DevOps}{Alpharetta, GA}
+\item Managed a team of 3 developers on a DevOps intiative reaching into a 60+ engineer development team
+\item Architected a full infrastructure as code transformation for a PCI compliant legacy product using Chef
+\item Successfully guided product through multiple order of magnitude scalability events
+\item Significantly improved collaboration between the product and operations teams
+\item Guided team through continual development of a inverted CI pipeline using unit testing, static analysis, continual deployment, and integration testing pre-merge to reduce developer feedback loops
 \item Attained the highest possible overall performance rating during annual performance reviews
 \end{rSubsection}
 
@@ -111,9 +112,17 @@ Volunteered as a bioinformatician for the Momany Laboratory. Performed reference
 %	LEADERSHIP EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
 
-\begin{rSection}{Leadership}
+\begin{rSection}{Leadership \& Speaking}
 
-\begin{rSubsection}{NCR, Aloha Online Ordering }{May 2013 - Present}{Lead Developer}{Alpharetta, GA}
+\begin{rSubsection}{Speaking Engagements}{}{}{}
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+ChefConf 2016 & \textbf{http://sched.co/6wAf} \\
+Microsoft Channel9 & \textbf{http://www.aka.ms/ChefConfLive} timestamp: 3h 20m \\
+\end{tabular}
+
+\end{rSubsection}
+
+\begin{rSubsection}{NCR Online Ordering }{May 2013 - Present}{Lead Developer}{Alpharetta, GA}
 \item Managed development on the maintenance team consisting of two developers during feature development up to eight developers during regression
 \item Organized and executed international production deployments and critical patch deployments of core Aloha Online Ordering products
 \item Served as the primary developer resource for database optimization. Regularly assisted developers in database management and efficient data access patterns
@@ -122,19 +131,18 @@ and core efficiency by relating costs and benefits to nontechnical staff and man
 \item Mentored other developers and helped develop the on boarding process for newly hired developers
 \end{rSubsection}
 
-\begin{rSubsection}{UGA CUDA Teaching Center}{August 2011 - May 2013}{Founding Member, Speaker}{Athens, GA}
-\item Helped establish UGA as a NVIDIA sponsored 2011-2012 CUDA Teaching Center
-\item Attended the 2012 GPU Technology Conference funded by the Georgia Advanced Computing Resource Center
-\item Regularly presented on topics such as multiple GPU programming and code optimization
-\item Assisted in workshops intended to introduce the broader university community to the benefits and challenges of
-GPU computation
-\end{rSubsection}
+\end{rSection}
 
-\begin{rSubsection}{UGA Biology Undergraduate Development Group}{August 2011 - May 2013}{Assistant Educator, Computational Biology Expert}{Athens, GA}
-\item Assisted the undergraduate biology laboratory director Dr. Kristen Miller and instructor Dr. Norris Armstrong in modifying existing biology lab exercises by including a higher level of engaging computational biology analysis
-\item Demonstrated the first modified bioinformatic-enabled lab exercise in Summer 2012
-\item Developed laboratory exercises and course plans for use in introductory biology laboratory activities and graduate level bioinformatics analysis courses
-\end{rSubsection}
+\begin{rSection}{About This Document}
+
+This document is continually delivered with Jenkins, KitchenCI, and Chef.
+For more information feel free to check out the github repository (\textbf{https://goo.gl/VuGOeD})
+or scan the QR code at the bottom of the page.
+
+
+\begin{pspicture}(1in,1in)
+  \psbarcode{https://github.com/jkerry/CookbookResume}{}{qrcode}
+\end{pspicture}
 
 \end{rSection}
 
@@ -142,11 +150,7 @@ GPU computation
 %	EXAMPLE SECTION
 %----------------------------------------------------------------------------------------
 
-%\begin{rSection}{Section Name}
 
-%Section content\ldots
-
-%\end{rSection}
 
 %----------------------------------------------------------------------------------------
 
