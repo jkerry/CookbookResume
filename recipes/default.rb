@@ -78,3 +78,32 @@ execute '/usr/bin/pdflatex -shell-escape resume.tex' do
   subscribes :run, 'template[/build/Resume/resume.tex]'
   subscribes :run, 'template[/build/Resume/resume.cls]'
 end
+
+directory '/home/vagrant/.ssh' do
+  recursive true
+  owner build_user
+  group build_group
+  mode '0755'
+end
+
+ssh_private_key = data_bag_item('ssh_keys', 'vagrant')
+file '/home/vagrant/.ssh/id_rsa' do
+  content ssh_private_key['id_rsa']
+  sensitive true
+  owner build_user
+  group build_group
+  mode '0700'
+end
+
+scp = 'scp -i ~/.ssh/id_rsa'
+skip_validation = '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+files = "/build/Resume/resume.pdf #{node['resume']['delivery_target']}"
+execute 'Deliver resume pdf' do
+  action :nothing
+  command "#{scp} #{skip_validation} #{files}"
+  cwd '/build/Resume'
+  user build_user
+  group build_group
+  subscribes :run, 'execute[/usr/bin/pdflatex -shell-escape resume.tex]'
+  only_if { node['resume']['deliver_on_build'] }
+end

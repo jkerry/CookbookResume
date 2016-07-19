@@ -9,7 +9,7 @@ describe package('texlive') do
 end
 
 describe file('/build/Resume') do
-  it { should be_directory}
+  it { should be_directory }
 end
 
 describe file('/build/Resume/resume.cls') do
