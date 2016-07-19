@@ -90,7 +90,7 @@ describe file('/build/Resume/images/kitchen-logo.png') do
   it { should be_executable.by('group') }
   it { should_not be_writable.by('group') }
   it { should be_readable.by('group') }
-  its('md5sum') { should eq '62c38a300ec97d401ea7fd1a4d948c18' }
+  its('md5sum') { should eq '82c166c23c49f5a7e5a8e2e7eeff217d' }
 end
 
 describe file('/home/vagrant/.ssh') do
