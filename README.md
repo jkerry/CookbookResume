@@ -21,3 +21,8 @@ Even though we are always qualified for every job we want and this fact is
 immediately evident by our mere presence we occasionally need to customize our
 our CV for the job at hand.  This is accomplished by carving out feature branches off of master and makign whatever customizations are needed. Jenkins should then do a
 non-deliverable build with real contact information.
+
+## Testing
+
+This cookbook adheres to default rubocop restrictions and passes all inspec
+integration tests because.. why not?
