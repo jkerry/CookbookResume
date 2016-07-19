@@ -70,6 +70,13 @@ cookbook_file '/build/Resume/images/jenkins-logo.png' do
   mode '0755'
 end
 
+cookbook_file '/build/Resume/images/kitchen-logo.png' do
+  source 'kitchen-logo.png'
+  owner build_user
+  group build_group
+  mode '0755'
+end
+
 execute '/usr/bin/pdflatex -shell-escape resume.tex' do
   action :nothing
   cwd '/build/Resume'

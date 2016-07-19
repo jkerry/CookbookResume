@@ -81,6 +81,18 @@ describe file('/build/Resume/images/jenkins-logo.png') do
   its('md5sum') { should eq '62c38a300ec97d401ea7fd1a4d948c18' }
 end
 
+describe file('/build/Resume/images/kitchen-logo.png') do
+  it { should_not be_directory }
+  it { should be_owned_by 'vagrant' }
+  it { should be_executable.by('owner') }
+  it { should be_writable.by('owner') }
+  it { should be_readable.by('owner') }
+  it { should be_executable.by('group') }
+  it { should_not be_writable.by('group') }
+  it { should be_readable.by('group') }
+  its('md5sum') { should eq '62c38a300ec97d401ea7fd1a4d948c18' }
+end
+
 describe file('/home/vagrant/.ssh') do
   it { should be_directory }
   it { should be_owned_by 'vagrant' }
