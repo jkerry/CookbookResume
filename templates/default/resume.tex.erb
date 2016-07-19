@@ -25,7 +25,7 @@
 \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
 \usepackage{pst-barcode}
 \usepackage{auto-pst-pdf}
-\usepackage{wrapfig}
+\usepackage{graphicx}
 
 \name{John Kerry} % Your name
 \address{<%= node['resume']['address']['street']%> \\ <%= node['resume']['address']['city']%>, <%= node['resume']['address']['state']%> <%= node['resume']['address']['zip']%>} % Your address
@@ -137,12 +137,16 @@ and core efficiency by relating costs and benefits to nontechnical staff and man
 
 This document is continually delivered with Jenkins, KitchenCI, and Chef.
 For more information feel free to check out the github repository (\textbf{https://goo.gl/VuGOeD})
-or scan the QR code at the bottom of the page.
+or scan the QR code.
 
 
-\begin{pspicture}(1in,1in)
-  \psbarcode{https://github.com/jkerry/CookbookResume}{}{qrcode}
-\end{pspicture}
+\begin{center}
+  \includegraphics[height=1in]{images/pic-chef-logo.png}
+  \begin{pspicture}(1in,1in)
+    \psbarcode{https://github.com/jkerry/CookbookResume}{}{qrcode}
+  \end{pspicture}
+  \includegraphics[height=1in]{images/jenkins-logo.png}
+\end{center}
 
 \end{rSection}
 

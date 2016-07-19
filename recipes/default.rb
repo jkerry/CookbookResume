@@ -49,6 +49,27 @@ template '/build/Resume/resume.tex' do
   mode '0766'
 end
 
+directory '/build/Resume/images' do
+  recursive true
+  owner build_user
+  group build_group
+  mode '0755'
+end
+
+cookbook_file '/build/Resume/images/pic-chef-logo.png' do
+  source 'pic-chef-logo.png'
+  owner build_user
+  group build_group
+  mode '0755'
+end
+
+cookbook_file '/build/Resume/images/jenkins-logo.png' do
+  source 'jenkins-logo.png'
+  owner build_user
+  group build_group
+  mode '0755'
+end
+
 execute '/usr/bin/pdflatex -shell-escape resume.tex' do
   action :nothing
   cwd '/build/Resume'
