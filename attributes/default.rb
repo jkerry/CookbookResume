@@ -6,7 +6,9 @@ default['resume'] = {
     'zip' => '55555'
   },
   'phone' => '(555)~$\cdot$~555~$\cdot$~5555',
-  'delivery_target' =>
-  'ssh_username@ssh_server:/path/to/resume.pdf',
+  'delivery_target' => {
+    'resume' => 'ssh_username@ssh_server:/path/to/resume.pdf',
+    'cover_letter' => 'ssh_username@ssh_server:/path/to/cover_letter.pdf',
+  },
   'deliver_on_build' => false
 }

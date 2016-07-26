@@ -84,7 +84,7 @@ end
 
 scp = 'scp -i ~/.ssh/id_rsa'
 skip_validation = '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
-files = "/build/Resume/resume.pdf #{node['resume']['delivery_target']}"
+files = "/build/Resume/resume.pdf #{node['resume']['delivery_target']['resume']}"
 execute 'Deliver resume pdf' do
   action :nothing
   command "#{scp} #{skip_validation} #{files}"
