@@ -11,7 +11,8 @@ platforms:
       gui: true
 suites:
   - name: default
-    data_bags_path: "test/integration/data_bags" 
+    data_bags_path: "test/integration/data_bags"
     run_list:
-      - recipe[Resume::default]
+      - recipe[Resume::resume]
+      - recipe[Resume::cover_letter]
     attributes:
