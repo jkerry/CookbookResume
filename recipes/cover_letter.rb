@@ -8,6 +8,13 @@ include_recipe 'Resume::default'
 build_user = 'vagrant'
 build_group = 'vagrant'
 
+directory '/build/CoverLetter' do
+  recursive true
+  owner build_user
+  group build_group
+  mode '0755'
+end
+
 directory '/build/CoverLetter/images' do
   recursive true
   owner build_user
@@ -51,15 +58,17 @@ execute '/usr/bin/pdflatex cover_letter.tex' do
   subscribes :run, 'template[/build/CoverLetter/cover_letter.tex]'
 end
 
-scp = 'scp -i ~/.ssh/id_rsa'
-skip_validation = '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
-files = "/build/CoverLetter/cover_letter.pdf #{node['resume']['delivery_target']['cover_letter']}"
-execute 'Deliver resume pdf' do
-  action :nothing
-  command "#{scp} #{skip_validation} #{files}"
-  cwd '/build/CoverLetter'
-  user build_user
-  group build_group
-  subscribes :run, 'execute[/usr/bin/pdflatex cover_letter.tex]'
-  only_if { node['resume']['deliver_on_build'] }
+if node['resume']['deliver_on_build']
+  scp = 'scp -i ~/.ssh/id_rsa'
+  skip_validation = '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+  files = "/build/CoverLetter/cover_letter.pdf #{node['resume']['delivery_target']['cover_letter']}"
+  execute 'Deliver resume pdf' do
+    action :nothing
+    command "#{scp} #{skip_validation} #{files}"
+    cwd '/build/CoverLetter'
+    user build_user
+    group build_group
+    subscribes :run, 'execute[/usr/bin/pdflatex cover_letter.tex]'
+    only_if { node['resume']['deliver_on_build'] }
+  end
 end
